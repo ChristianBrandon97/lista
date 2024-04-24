@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>DBP</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelector('#new-task').onsubmit = () => {
+          const cb = document.createElement("INPUT");
+          cb.setAttribute("type", "checkbox");
+
+          const li = document.createElement('li');
+          li.appendChild(cb);
+          li.innerHTML += document.querySelector('#task').value;
+
+          const removeBtn = document.createElement('button');
+          removeBtn.innerHTML = 'Eliminar';
+          removeBtn.onclick = function() {
+            this.parentNode.remove();
+          };
+          li.appendChild(removeBtn);
+
+          document.querySelector('#tasks').append(li);
+
+          document.querySelector('#task').value = '';
+
+          return false;
+        };
+
+        // Función para seleccionar o deseleccionar todas las casillas de verificación
+        document.querySelector('#select-all').onclick = () => {
+          const checkboxes = document.querySelectorAll('#tasks input[type="checkbox"]');
+          const selectAllBtn = document.querySelector('#select-all');
+
+          // Verificar si alguna casilla de verificación está desmarcada
+          let isAnyUnchecked = Array.from(checkboxes).some(checkbox => !checkbox.checked);
+
+          // Si alguna está desmarcada, seleccionar todas; de lo contrario, deseleccionar todas
+          checkboxes.forEach(checkbox => {
+            checkbox.checked = isAnyUnchecked;
+          });
+
+          // Cambiar el texto del botón según el estado actual de las casillas de verificación
+          selectAllBtn.textContent = isAnyUnchecked ? 'Deseleccionar Todo' : 'Seleccionar Todo';
+        };
+      });
+    </script>
+  </head>
+  <body>
+    
+    <h1>LISTA DE TAREAS</h1>
+
+    <form id="new-task" class="new-task">
+      <input id="task" autocomplete="off" autofocus placeholder="Tarea Nueva" type="text">
+      <input type="submit">
+    </form>
+
+    <button id="select-all">Seleccionar Todo</button>
+    <ol id="tasks"></ol>
+  </body>
+</html>

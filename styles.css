@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+ 
+  }
+  
+  h1 {
+    margin-top: 50px;
+    color:rgb(74, 135, 228);
+
+  }
+  
+  #new-task {
+    margin-bottom: 20px;
+  }
+  /*
+  #tasks {
+    list-style-type: none;
+    padding: 0;
+  } */
+  
+  li {
+    margin-bottom: 10px;
+    margin-left: 43%;
+    text-align: justify;
+
+  }
+  
+  button {
+    margin-left: 5px;
+  }
+  .new-task input{
+    width: 150px;
+    height: 30px;
+    border-radius: 6px;
+    font-size: 15px;
+    padding: 0 15px;
+    border: 2px solid rgb(84, 165, 231);
+    outline: none;
+   
+  }
+
+ 
